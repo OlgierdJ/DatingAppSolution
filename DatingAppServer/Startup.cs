@@ -1,3 +1,5 @@
+using DatingAppLibrary.Interfaces;
+using DatingAppServer.DataAccess;
 using DatingAppServer.DBConnection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +31,15 @@ namespace DatingAppServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DBDataContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                );
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IProfileRepository, ProfileRepository>();
+            services.AddTransient<IPreferenceRepository, PreferenceRepository>();
+            services.AddTransient<ISexualPreferenceRepository, SexualPreferenceRepository>();
+            services.AddTransient<ILikeRepository, LikeRepository>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
             services.AddControllers();
         }
 
@@ -40,17 +50,19 @@ namespace DatingAppServer
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            var dbDataContext = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using (var serviceScope = dbDataContext.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<DBDataContext>();
+                dbContext.Database.EnsureCreated();
+            }
         }
     }
 }

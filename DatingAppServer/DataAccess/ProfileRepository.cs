@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DatingAppServer.DataAccess
 {
-    public class ProductRepository : Repository<Profile>, IProfileRepository
+    public class ProfileRepository : Repository<Profile>, IProfileRepository
     {
-        public ProductRepository(DBDataContext context) : base(context)
+        public ProfileRepository(DBDataContext context) : base(context)
         {
         }
 

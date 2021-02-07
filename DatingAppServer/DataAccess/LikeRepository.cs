@@ -1,32 +1,18 @@
 ﻿using DatingAppLibrary.Interfaces;
 using DatingAppLibrary.Models;
+using DatingAppServer.DBConnection;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DatingAppServer.DataAccess
 {
-    public class LikeRepository : IDataObject<Like>
+    public class LikeRepository : Repository<Like>, ILikeRepository
     {
-        public Like Create(Like newObject)
+        public LikeRepository(DBDataContext context) : base(context)
         {
-            throw new System.NotImplementedException();
         }
 
-        public Like Delete(int ObjectID)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Like Get(int ObjectID)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<Like> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Like Update(Like changedObject)
+        public Task<Like> GetLikeByIdAsync(int id)
         {
             throw new System.NotImplementedException();
         }

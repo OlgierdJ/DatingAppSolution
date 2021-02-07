@@ -8,8 +8,11 @@ namespace DatingAppLibrary.Interfaces
 {
     public interface IUserService
     {
+        Task<User> AddUserAsync(User newCustomer);
         Task<List<User>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(int id);
-        Task<User> AddUserAsync(User newCustomer);
+        Task<User> UpdateUserAsync(User newCustomer);
+        Task<User> DeleteUserAsync(User deletedUser);
+
     }
 }

@@ -8,14 +8,12 @@ namespace DatingAppLibrary.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class, new()
     {
-        IQueryable<TEntity> GetAll();
-
         Task<TEntity> AddAsync(TEntity entity);
+
+        IQueryable<TEntity> GetAll();
 
         Task<TEntity> UpdateAsync(TEntity entity);
 
-        TEntity Delete(int objectID);
-
-        Task<TEntity> DeleteAsync(int objectID);
+        Task<TEntity> DeleteAsync(TEntity objectID);
     }
 }

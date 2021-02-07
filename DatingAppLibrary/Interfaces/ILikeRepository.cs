@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DatingAppLibrary.Interfaces
 {
-    public interface IProfileRepository : IRepository<Profile>
+    public interface ILikeRepository : IRepository<Like>
     {
-        Task<Profile> GetProductByIdAsync(int id);
+        Task<Like> GetLikeByIdAsync(int id);
     }
 }
