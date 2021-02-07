@@ -4,9 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatingApp"
+        xmlns:views="clr-namespace:DatingApp.Views"
+        xmlns:navigation="clr-namespace:DatingApp.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DatingApp" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type navigation:LoginViewModel}">
+            <views:LoginView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type navigation:RegisterViewModel}">
+            <views:RegisterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type navigation:HomeViewModel}">
+            <views:HomeView/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-
+        <ContentControl Content="{Binding SelectedViewModel}" Focusable="False" FocusVisualStyle="{x:Null}"/>
     </Grid>
 </Window>
