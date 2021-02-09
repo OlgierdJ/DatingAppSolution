@@ -1,10 +1,7 @@
 ﻿using DatingApp.ViewModels;
 using DatingApp.Views;
-using DatingAppLibrary.Models;
-using System;
-using System.Collections.Generic;
+using DatingAppLibrary.Models.Enums;
 using System.Diagnostics;
-using System.Text;
 using System.Windows.Controls;
 
 namespace DatingApp.ValueConverters
@@ -20,21 +17,21 @@ namespace DatingApp.ValueConverters
         /// <param name="view"></param>
         /// <param name="viewModel"></param>
         /// <returns></returns>
-        public static UserControl ToBaseView(this ApplicationView view, object viewModel = null)
+        public static BaseViewModel ToViewModel(this ApplicationView view, MainViewModel mainContext = null)
         {
             switch (view)
             {
                 case ApplicationView.Login:
-                    return new LoginView(viewModel as LoginViewModel);
+                    return new LoginViewModel(mainContext);
 
                 case ApplicationView.Register:
-                    return new RegisterView(viewModel as RegisterViewModel);
+                    return new RegisterViewModel(mainContext);
 
-                case ApplicationView.Chat:
-                    return new ChatView(viewModel as ChatMessageListViewModel);
+                //case ApplicationView.Chat:
+                   // return new ChatViewModel(mainContext as ChatMessageListViewModel);
 
-                case ApplicationView.Browse:
-                    return new HomeView(viewModel as HomeViewModel);
+                case ApplicationView.Home:
+                    return new HomeViewModel(mainContext);
 
                 default:
                     Debugger.Break();
@@ -47,17 +44,17 @@ namespace DatingApp.ValueConverters
         /// </summary>
         /// <param name="view"></param>
         /// <returns></returns>
-        public static ApplicationView ToApplicationView(this UserControl view)
+        public static ApplicationView ToApplicationView(this BaseViewModel viewModel)
         {
-            if (view is ChatView)
-                return ApplicationView.Chat;
+            //if (view is ChatView)
+            //    return ApplicationView.Chat;
 
-            if (view is LoginView)
+            if (viewModel is LoginViewModel)
                 return ApplicationView.Login;
-
-            if (view is RegisterView)
+            if (viewModel is RegisterViewModel)
                 return ApplicationView.Register;
-
+            if (viewModel is HomeViewModel)
+                return ApplicationView.Home;
             Debugger.Break();
             return default(ApplicationView);
         }

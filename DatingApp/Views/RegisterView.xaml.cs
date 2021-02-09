@@ -1,6 +1,8 @@
 ﻿using DatingApp.ViewModels;
+using DatingAppLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Security;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,19 +19,23 @@ namespace DatingApp.Views
     /// <summary>
     /// Interaction logic for Register.xaml
     /// </summary>
-    public partial class RegisterView
+    public partial class RegisterView : UserControl, IHavePassword
     {
-        public RegisterView() : base()
+        public RegisterView()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Constructor with specific view model
-        /// </summary>
-        public RegisterView(RegisterViewModel specificViewModel)
+        public SecureString SecurePassword
         {
-            InitializeComponent();
+            get
+            {
+                if (PasswordField.Password == PasswordConfirmationField.Password)
+                {
+                    return PasswordField.SecurePassword;
+                }
+                throw new Exception("Passwords do not match.");
+            }
         }
     }
 }

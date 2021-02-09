@@ -1,4 +1,7 @@
-﻿using DatingAppLibrary.Models;
+﻿using DatingApp.ValueConverters;
+using DatingAppLibrary.Models;
+using DatingAppLibrary.Models.DataModels;
+using DatingAppLibrary.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +9,9 @@ using System.Windows.Input;
 
 namespace DatingApp.ViewModels
 {
+    //Maybe rename mainviewmodel to WindowViewModel cause makes more sense for when you are logged in to be in the "main" of the program.
     public class MainViewModel : BaseViewModel
     {
-        private BaseViewModel _selectedViewModel;
         public BaseViewModel SelectedViewModel
         {
             get { return _selectedViewModel; }
@@ -18,25 +21,55 @@ namespace DatingApp.ViewModels
                 OnPropertyChanged(nameof(SelectedViewModel));
             }
         }
-
-        public ICommand UpdateViewCommand { get; set; }
-        public MainViewModel() { }
-        public MainViewModel(ICommand updateViewCommand)
+        public ApplicationView CurrentView
         {
-            UpdateViewCommand = updateViewCommand;
-        }
-
-        private List<User> _users;
-        public List<User> Users {
             get
             {
-                return _users;
+                return _currentView;
             }
             set
             {
-                _users = value;
-                OnPropertyChanged(nameof(Users));
+                _currentView = value;
+                SelectedViewModel = _currentView.ToViewModel(this);
+                //Dont know if im going to use this propertychanged yet but it doesnt hurt anybody.
+                OnPropertyChanged(nameof(CurrentView));
             }
         }
+        public User CurrentUser
+        {
+            get
+            {
+                return _currentUser;
+            }
+            set
+            {
+                _currentUser = value;
+
+                //If there is a user then login.
+                if (_currentUser != null)
+                {
+                    CurrentView = ApplicationView.Home;
+                }
+                //Else stay or logout.
+                else
+                {
+                    if (CurrentView != ApplicationView.Login)
+                    {
+                        CurrentView = ApplicationView.Login;
+                    }
+                }
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
+
+        public MainViewModel()
+        {
+            CurrentView = ApplicationView.Login;
+        }
+
+        private BaseViewModel _selectedViewModel;
+        private ApplicationView _currentView;
+        private User _currentUser;
+
     }
 }

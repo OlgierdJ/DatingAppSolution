@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DatingAppLibrary.Models
+namespace DatingAppLibrary.Models.DataModels
 {
     /// <summary>
     /// Object used for storing preference details.

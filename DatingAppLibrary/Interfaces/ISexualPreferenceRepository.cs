@@ -1,4 +1,4 @@
-﻿using DatingAppLibrary.Models;
+﻿using DatingAppLibrary.Models.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Text;

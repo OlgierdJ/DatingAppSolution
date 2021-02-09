@@ -2,27 +2,32 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DatingAppLibrary.Models
+namespace DatingAppLibrary.Models.Enums
 {
     public enum ApplicationView
     {
         /// <summary>
-        /// The initial login page.
+        /// The Login view.
         /// </summary>
         Login,
 
         /// <summary>
-        /// The main chat page.
-        /// </summary>
-        Chat,
-
-        /// <summary>
-        /// The register page.
+        /// The Register view.
         /// </summary>
         Register,
 
         /// <summary>
-        /// The Browse page.
+        /// The Home view.
+        /// </summary>
+        Home,
+
+        /// <summary>
+        /// The main chat view.
+        /// </summary>
+        Chat,
+
+        /// <summary>
+        /// The Browse view.
         /// </summary>
         Browse,
     }

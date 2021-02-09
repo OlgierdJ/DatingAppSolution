@@ -19,17 +19,9 @@ namespace DatingApp.Views
     /// <summary>
     /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class HomeView
+    public partial class HomeView : UserControl
     {
         public HomeView()
-        {
-            InitializeComponent();
-        }
-
-        /// <summary>
-        /// Constructor with specific view model
-        /// </summary>
-        public HomeView(HomeViewModel specificViewModel)
         {
             InitializeComponent();
         }

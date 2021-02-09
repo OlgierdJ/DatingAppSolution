@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DatingAppLibrary.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DatingAppLibrary.Models
+namespace DatingAppLibrary.Models.DataModels
 {
     /// <summary>
     /// Object used for storing user details aswell as reference ids.

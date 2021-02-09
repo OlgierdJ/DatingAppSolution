@@ -19,17 +19,9 @@ namespace DatingApp.Views
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : IHavePassword
+    public partial class LoginView : UserControl, IHavePassword
     {
-        public LoginView() : base()
-        {
-            InitializeComponent();
-        }
-
-        /// <summary>
-        /// Constructor with specific view model
-        /// </summary>
-        public LoginView(LoginViewModel specificViewModel)
+        public LoginView()
         {
             InitializeComponent();
         }

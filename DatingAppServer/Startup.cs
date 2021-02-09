@@ -1,6 +1,7 @@
 using DatingAppLibrary.Interfaces;
 using DatingAppServer.DataAccess;
 using DatingAppServer.DBConnection;
+using DatingAppServer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,11 +36,12 @@ namespace DatingAppServer
                 );
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IProfileRepository, ProfileRepository>();
-            services.AddTransient<IPreferenceRepository, PreferenceRepository>();
-            services.AddTransient<ISexualPreferenceRepository, SexualPreferenceRepository>();
-            services.AddTransient<ILikeRepository, LikeRepository>();
-            services.AddTransient<IMessageRepository, MessageRepository>();
+            //services.AddTransient<IProfileRepository, ProfileRepository>();
+            //services.AddTransient<IPreferenceRepository, PreferenceRepository>();
+            //services.AddTransient<ISexualPreferenceRepository, SexualPreferenceRepository>();
+            //services.AddTransient<ILikeRepository, LikeRepository>();
+            //services.AddTransient<IMessageRepository, MessageRepository>();
+            services.AddTransient<IUserService, UserService>();
             services.AddControllers();
         }
 

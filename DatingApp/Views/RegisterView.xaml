@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:DatingApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             x:Name="Register"
              d:DesignHeight="720" d:DesignWidth="1280">
-    <Grid Margin="30" Background="White">
+    <Grid Margin="30" FocusVisualStyle="{x:Null}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -20,7 +21,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionButton}" Command="{Binding BackCommand}" CommandParameter="LoginView" ToolTip="Clicking here abandons your data!">
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionButton}" Command="{Binding BackCommand}" ToolTip="Clicking here abandons your data!">
             <TextBlock FontSize="32" FontWeight="Heavy" Height="50" Text="⬅"/>
         </Button>
         <TextBlock Grid.Column="1" Text="DATING APP" FontSize="32" FontWeight="Heavy" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -36,13 +37,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox FontSize="25" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Username" VerticalAlignment="Center"/>
-            <PasswordBox Grid.Row="1" FontSize="25" Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" materialDesign:HintAssist.Hint="Password" MaxLength="32" VerticalAlignment="Center"/>
-            <PasswordBox Grid.Column="2" Grid.Row="1" FontSize="25" Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" materialDesign:HintAssist.Hint="Password Confirmation" MaxLength="32" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="2" FontSize="25" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Email" VerticalAlignment="Center"/>
+            <TextBox FontSize="25" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Username" Text="{Binding Username}" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="PasswordField" Grid.Row="1" FontSize="25" Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" materialDesign:HintAssist.Hint="Password" MaxLength="32" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="PasswordConfirmationField" Grid.Column="2" Grid.Row="1" FontSize="25" Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" materialDesign:HintAssist.Hint="Password Confirmation" MaxLength="32" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="2" FontSize="25" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Email" Text="{Binding Email}" VerticalAlignment="Center"/>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding RegisterUserCommand}" CommandParameter="LoginView" ToolTip="Clicking here abandons your data!">
-            <TextBlock FontSize="32" FontWeight="Heavy" Text="Next"/>
+        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Register}" ToolTip="Clicking here abandons your data!">
+            <TextBlock FontSize="32" FontWeight="Heavy" Text="Confirm Register"/>
         </Button>
     </Grid>
 </UserControl>

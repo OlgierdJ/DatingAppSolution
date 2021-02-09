@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DatingAppLibrary.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DatingAppLibrary.Models
+namespace DatingAppLibrary.Models.DataModels
 {
     /// <summary>
     /// Class used for binding many to many objects together via reference IDs.

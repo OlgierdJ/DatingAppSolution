@@ -17,28 +17,12 @@ namespace DatingApp.Views
     /// <summary>
     /// Interaction logic for ChatView.xaml
     /// </summary>
-    public partial class ChatView
+    public partial class ChatView : UserControl
     {
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
         public ChatView()
         {
             InitializeComponent();
         }
-
-        /// <summary>
-        /// Constructor with specific view model
-        /// </summary>
-        /// <param name="specificViewModel">The specific view model to use for this page</param>
-        public ChatView(ChatMessageListViewModel specificViewModel)
-        {
-            InitializeComponent();
-        }
-
-        #endregion
 
         /// <summary>
         /// Preview the input into the message box and respond as required

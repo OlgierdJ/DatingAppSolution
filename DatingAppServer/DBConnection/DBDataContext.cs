@@ -1,4 +1,5 @@
-﻿using DatingAppLibrary.Models;
+﻿using DatingAppLibrary.Models.DataModels;
+using DatingAppLibrary.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols;
 using System.Configuration;

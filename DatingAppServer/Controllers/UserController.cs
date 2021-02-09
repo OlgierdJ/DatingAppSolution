@@ -1,5 +1,6 @@
 ﻿using DatingAppLibrary.Interfaces;
 using DatingAppLibrary.Models;
+using DatingAppLibrary.Models.DataModels;
 using DatingAppServer.DBConnection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace DatingAppServer.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -20,31 +24,31 @@ namespace DatingAppServer.Controllers
             _userService = userService;
         }
 
+        [HttpPost, Route("CreateUser")]
+        public async Task<ActionResult<User>> CreateUser(User user) => await _userService.AddUserAsync(user);
 
-
-        public async Task<ActionResult<User>> CreateUser(User user)
+        [HttpPost, Route("Login")]
+        public async Task<ActionResult<User>> Login(User user)
         {
-            return await _userService.AddUserAsync(user);
+            User attempt = await _userService.Login(user);
+            if (attempt==null)
+            {
+              return BadRequest();
+            }
+            return Ok(user);
         }
 
-        public async Task<ActionResult<List<User>>> GetAllUsers()
-        {
-            return await _userService.GetAllUsersAsync();
-        }
+        [HttpGet, Route("GetUsers")]
+        public async Task<ActionResult<List<User>>> GetAllUsers() => await _userService.GetAllUsersAsync();
 
-        public async Task<ActionResult<User>> GetUserById(int id)
-        {
-            return await _userService.GetUserByIdAsync(id);
-        }
-        public async Task<ActionResult<User>> UpdateUser(User user)
-        {
-            return await _userService.UpdateUserAsync(user);
-        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(int id) => await _userService.GetUserByIdAsync(id);
 
-        public async Task<ActionResult<User>> DeleteUser(User deletedUser)
-        {
-            return await _userService.DeleteUserAsync(deletedUser);
-        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<User>> UpdateUser(User user) => await _userService.UpdateUserAsync(user);
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<User>> DeleteUser(int id) => await _userService.DeleteUserAsync(id);
 
     }
 }

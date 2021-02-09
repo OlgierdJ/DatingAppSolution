@@ -1,10 +1,8 @@
 ﻿using DatingAppLibrary.Interfaces;
-using DatingAppLibrary.Models;
+using DatingAppLibrary.Models.DataModels;
 using DatingAppServer.DBConnection;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DatingAppServer.DataAccess
@@ -25,6 +23,15 @@ namespace DatingAppServer.DataAccess
             return await GetAll().FirstOrDefaultAsync(x => x.ID == id);
         }
 
+        public async Task<User> GetUserByDetailsAsync(User attempt)
+        {
+            return await GetAll().FirstOrDefaultAsync(x => x.Username == attempt.Username && x.Password == attempt.Password);
+        }
+
+        public async Task<User> DeleteAsync(int id)
+        {
+           return await DeleteAsync(await GetUserByIdAsync(id));
+        }
         //    public Task<User> GetAsync(int ObjectID)
         //    {
         //        throw new NotImplementedException();

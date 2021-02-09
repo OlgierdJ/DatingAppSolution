@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DatingAppLibrary.Models
+namespace DatingAppLibrary.Models.DataModels
 {
     /// <summary>
     /// User object used for storing Email, Username, Password and UserProfileRefID
@@ -30,10 +30,6 @@ namespace DatingAppLibrary.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         /// <summary>
-        /// Navigational Profile object containing users details.
-        /// </summary>
-        public Profile UserProfile { get; set; }
-        /// <summary>
         /// Boolean determining whether the user is Active or not.
         /// </summary>
         public bool Active { get; set; }
@@ -41,6 +37,12 @@ namespace DatingAppLibrary.Models
         /// DateTime holding the DoT of the creation of the User.
         /// </summary>
         public DateTime CreationDate { get; set; }
+        /// <summary>
+        /// Navigational Profile object containing users details.
+        /// </summary>
+        public Profile UserProfile { get; set; }
+
+        //public List<ChatSession> ChatSessions { get; set; }
         /// <summary>
         /// Navigational List of Like objects containing the outgoing likes of the current user.
         /// </summary>
@@ -52,22 +54,22 @@ namespace DatingAppLibrary.Models
         /// <summary>
         /// Matching property used for getting matching like objects.
         /// </summary>
-        public ICollection<Like> matches
-        {
-            get
-            {
-                foreach (Like outgoing in Liked)
-                {
-                    foreach (Like incoming in Likers)
-                    {
-                        if (outgoing.Likee == incoming.Liker)
-                        {
-                            matches.Add(incoming);
-                        }
-                    }
-                }
-                return matches;
-            }
-        }
+        //public ICollection<Like> matches
+        //{
+        //    get
+        //    {
+        //        foreach (Like outgoing in Liked)
+        //        {
+        //            foreach (Like incoming in Likers)
+        //            {
+        //                if (outgoing.Likee == incoming.Liker)
+        //                {
+        //                    matches.Add(incoming);
+        //                }
+        //            }
+        //        }
+        //        return matches;
+        //    }
+        //}
     }
 }

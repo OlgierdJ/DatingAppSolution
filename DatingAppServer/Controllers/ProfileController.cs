@@ -1,5 +1,6 @@
 ﻿using DatingAppLibrary.Interfaces;
 using DatingAppLibrary.Models;
+using DatingAppLibrary.Models.DataModels;
 using DatingAppServer.DBConnection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,9 @@ namespace DatingAppServer.Controllers
 {
     public class ProfileController : ControllerBase
     {
-        private readonly IUserService _profileService;
+        private readonly IProfileService _profileService;
 
-        public ProfileController(IUserService userService)
+        public ProfileController(IProfileService userService)
         {
             _profileService = userService;
         }
@@ -24,25 +25,25 @@ namespace DatingAppServer.Controllers
 
         public async Task<ActionResult<Profile>> CreateProfile(Profile profile)
         {
-            return await _profileService.AddUserAsync(profile);
+            return await _profileService.AddProfileAsync(profile);
         }
 
-        public async Task<ActionResult<List<Profile>>> GetAllUsers()
+        public async Task<ActionResult<List<Profile>>> GetAllProfiles()
         {
-            return await _profileService.GetAllUsersAsync();
+            return await _profileService.GetAllProfilesAsync();
         }
 
-        public async Task<ActionResult<Profile>> GetUserById(int id)
+        public async Task<ActionResult<Profile>> GetProfileById(int id)
         {
-            return await _profileService.GetUserByIdAsync(id);
+            return await _profileService.GetProfileByIdAsync(id);
         }
 
-        public async Task<ActionResult<Profile>> UpdateUser(Profile updatedProfile)
+        public async Task<ActionResult<Profile>> UpdateProfile(Profile updatedProfile)
         {
-            return await _profileService.UpdateUserAsync(updatedProfile);
+            return await _profileService.UpdateProfileAsync(updatedProfile);
         }
 
-        public async Task<ActionResult<Profile>> DeleteUser(Profile deletedProfile)
+        public async Task<ActionResult<Profile>> DeleteProfile(Profile deletedProfile)
         {
             return await _profileService.DeleteProfileAsync(deletedProfile);
         }

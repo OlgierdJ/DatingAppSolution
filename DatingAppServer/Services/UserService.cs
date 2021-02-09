@@ -1,8 +1,6 @@
 ﻿using DatingAppLibrary.Interfaces;
-using DatingAppLibrary.Models;
-using System;
+using DatingAppLibrary.Models.DataModels;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DatingAppServer.Services
@@ -31,14 +29,19 @@ namespace DatingAppServer.Services
             return await _userRepository.GetUserByIdAsync(id);
         }
 
+        public async Task<User> Login(User user)
+        {
+            return await _userRepository.GetUserByDetailsAsync(user);
+        }
+
         public async Task<User> UpdateUserAsync(User updatedUser)
         {
             return await _userRepository.UpdateAsync(updatedUser);
         }
 
-        public async Task<User> DeleteUserAsync(User deletedUser)
+        public async Task<User> DeleteUserAsync(int id)
         {
-            return await _userRepository.DeleteAsync(deletedUser);
+            return await _userRepository.DeleteAsync(id);
         }
     }
 }

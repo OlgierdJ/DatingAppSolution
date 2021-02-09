@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DatingAppLibrary.Models
+namespace DatingAppLibrary.Models.Enums
 {
     public enum LikeType
     {

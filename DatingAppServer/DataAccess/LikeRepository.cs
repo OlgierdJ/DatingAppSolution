@@ -1,7 +1,6 @@
 ﻿using DatingAppLibrary.Interfaces;
-using DatingAppLibrary.Models;
+using DatingAppLibrary.Models.DataModels;
 using DatingAppServer.DBConnection;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DatingAppServer.DataAccess
