@@ -21,7 +21,13 @@
             <RowDefinition Height="3*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionButton}" Command="{Binding BackCommand}" ToolTip="Clicking here abandons your data!">
+        <Button HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                Command="{Binding BackCommand}" 
+                ToolTip="Clicking here abandons your data!" 
+                Background="{DynamicResource MaterialDesignLightBackground}" 
+                    FocusVisualStyle="{x:Null}">
             <TextBlock FontSize="32" FontWeight="Heavy" Height="50" Text="⬅"/>
         </Button>
         <TextBlock Grid.Column="1" Text="DATING APP" FontSize="32" Foreground="HotPink"  FontWeight="Heavy" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -37,46 +43,61 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+            <TextBox Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                  materialDesign:HintAssist.Background="{x:Null}"
                  materialDesign:HintAssist.FloatingOffset="1, -35"
-                 materialDesign:HintAssist.Foreground="{StaticResource MaterialDesignPaper}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
                      FontSize="25"
                      Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                      materialDesign:HintAssist.Hint="Username"
                      Text="{Binding Username}" 
                      VerticalAlignment="Center"/>
             <PasswordBox x:Name="PasswordField" Grid.Row="1"
-                         Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                         Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                  materialDesign:HintAssist.Background="{x:Null}"
                  materialDesign:HintAssist.FloatingOffset="1, -35"
-                 materialDesign:HintAssist.Foreground="{StaticResource MaterialDesignPaper}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
                          FontSize="25"
                          Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
                          materialDesign:HintAssist.Hint="Password"
                          MaxLength="32"
                          VerticalAlignment="Center"/>
             <PasswordBox x:Name="PasswordConfirmationField" Grid.Column="2" Grid.Row="1"
-                         Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                        Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                  materialDesign:HintAssist.Background="{x:Null}"
                  materialDesign:HintAssist.FloatingOffset="1, -35"
-                 materialDesign:HintAssist.Foreground="{StaticResource MaterialDesignPaper}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
                          FontSize="25" 
                          Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
                          materialDesign:HintAssist.Hint="Password Confirmation"
                          MaxLength="32"
                          VerticalAlignment="Center"/>
             <TextBox Grid.Row="2" FontSize="25"
-                     Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                     Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                  materialDesign:HintAssist.Background="{x:Null}"
                  materialDesign:HintAssist.FloatingOffset="1, -35"
-                 materialDesign:HintAssist.Foreground="{StaticResource MaterialDesignPaper}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
                      Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" 
                      materialDesign:HintAssist.Hint="Email"
                      Text="{Binding Email}"
                      VerticalAlignment="Center"/>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Register}" ToolTip="Clicking here attempts to register your data!">
+        <Button Grid.Row="2" 
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Height="50" 
+                Style="{StaticResource MaterialDesignFlatButton}"
+                Command="{Binding RegisterUserCommand}"
+                CommandParameter="{Binding ElementName=Register}"
+                ToolTip="Clicking here attempts to register your data!"
+                Background="{DynamicResource MaterialDesignDarkBackground}" 
+                    FocusVisualStyle="{x:Null}">
             <TextBlock FontSize="32" FontWeight="Heavy" Text="Confirm Register"/>
         </Button>
     </Grid>

@@ -1,7 +1,5 @@
 ﻿using DatingAppLibrary.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace DatingAppLibrary.Models.DataModels
 {
@@ -44,7 +42,7 @@ namespace DatingAppLibrary.Models.DataModels
         /// Navigational Preference object containing preferenced specifics.
         /// </summary>
         public Preference Preferences { get; set; }
-        
+
         /// <summary>
         /// Navigational User object containing login credentials of the user the current profile belongs to.
         /// </summary>
@@ -54,6 +52,7 @@ namespace DatingAppLibrary.Models.DataModels
         /// Full name. (Get access concatonation)
         /// </summary>
         //[NotMapped]
+        [JsonIgnore]
         public string FullName
         {
             get

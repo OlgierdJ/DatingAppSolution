@@ -1,11 +1,8 @@
 ﻿using DatingAppLibrary.Commands;
 using DatingAppLibrary.Interfaces;
-using DatingAppLibrary.Models.DataModels;
 using DatingAppLibrary.Models.Enums;
 using DatingAppLibrary.Security;
 using DatingAppLibrary.WebAPI;
-using System.Collections.Generic;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
 

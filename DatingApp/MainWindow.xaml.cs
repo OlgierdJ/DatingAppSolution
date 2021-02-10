@@ -1,5 +1,4 @@
 ﻿using DatingApp.ViewModels;
-using System.Configuration;
 using System.Windows;
 
 namespace DatingApp
@@ -9,6 +8,7 @@ namespace DatingApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        /*note to self: what the fuck is a poco object?...*/
         /*GOALS
          * 
          * Create dating app like shopping site haha xd.

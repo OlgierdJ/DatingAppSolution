@@ -1,13 +1,8 @@
 ﻿using DatingAppLibrary.Interfaces;
-using DatingAppLibrary.Models;
 using DatingAppLibrary.Models.DataModels;
-using DatingAppServer.DBConnection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DatingAppServer.Controllers

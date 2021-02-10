@@ -1,10 +1,8 @@
 ﻿using DatingAppLibrary.Models.DataModels;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-//using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Text.Json;
 
@@ -32,6 +30,7 @@ namespace DatingAppLibrary.WebAPI
             HttpContent content = new StringContent(load, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("user/login", content);
             //response.EnsureSuccessStatusCode();
+            //var json = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
                 return JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync(), SerializerOptions);

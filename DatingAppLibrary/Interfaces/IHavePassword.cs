@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security;
-using System.Text;
+﻿using System.Security;
 
 namespace DatingAppLibrary.Interfaces
 {
     /// <summary>
-    /// An interface for a class that can provide a secure password
+    /// An interface for a class that can provide a secure password.
     /// </summary>
     public interface IHavePassword
     {
         /// <summary>
-        /// The secure password
+        /// The secure password.
         /// </summary>
         SecureString SecurePassword { get; }
     }

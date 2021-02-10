@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DatingAppLibrary.Models.DataModels
+﻿namespace DatingAppLibrary.Models.DataModels
 {
     public class ChatSession
     {

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DatingAppLibrary.Models.DataModels
 {
     /// <summary>
-    /// User object used for storing Email, Username, Password and UserProfileRefID
+    /// User object used for storing Email, Username, Password, Active
     /// </summary>
     public class User
     {

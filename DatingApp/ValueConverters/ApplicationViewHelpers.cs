@@ -1,8 +1,6 @@
 ﻿using DatingApp.ViewModels;
-using DatingApp.Views;
 using DatingAppLibrary.Models.Enums;
 using System.Diagnostics;
-using System.Windows.Controls;
 
 namespace DatingApp.ValueConverters
 {

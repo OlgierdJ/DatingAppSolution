@@ -12,11 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace DatingAppServer
 {
@@ -43,7 +41,12 @@ namespace DatingAppServer
             //services.AddTransient<ILikeRepository, LikeRepository>();
             //services.AddTransient<IMessageRepository, MessageRepository>();
             services.AddTransient<IUserService, UserService>();
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options=> 
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                //options.JsonSerializerOptions.WriteIndented = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

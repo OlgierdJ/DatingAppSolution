@@ -6,8 +6,49 @@
              xmlns:local="clr-namespace:DatingApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1280">
+             d:DesignHeight="720" d:DesignWidth="1280" 
+             Background="{DynamicResource MaterialDesignLightSeparatorBackground}">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="128"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="128"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="9*"/>
+                </Grid.RowDefinitions>
+                <TextBox/>
+                <ListView/>
+            </Grid>
+        </ScrollViewer>
+        <Expander Style="{DynamicResource MaterialDesignExpander}"
+            Background="{DynamicResource MaterialDesignLightSeparatorBackground}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Content="Browse"
+                    Command="{Binding BrowseCommand}"/>
+                <Button Content="Chat"
+                    Command="{Binding ChatCommand}"/>
+            </Grid>
+        </Expander>
+        <TextBlock Grid.Column="1"
+                   Grid.Row="0"
+                   Text="DATING APP"
+                   FontSize="45"
+                   Foreground="HotPink"
+                   FontWeight="Heavy"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        <Button Content="Logout" Grid.Column="2" Command="{Binding LogoutCommand}"/>
     </Grid>
 </UserControl>

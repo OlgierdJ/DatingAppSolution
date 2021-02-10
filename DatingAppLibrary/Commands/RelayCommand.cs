@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace DatingAppLibrary.Commands
@@ -10,25 +8,15 @@ namespace DatingAppLibrary.Commands
     /// </summary>
     public class RelayCommand : ICommand
     {
-        #region Private Members
-
         /// <summary>
         /// The action to run.
         /// </summary>
         private Action _handler;
 
-        #endregion
-
-        #region Public Events
-
         /// <summary>
         /// The event thats fired when the <see cref="CanExecute(object)"/> value has changed.
         /// </summary>
         public event EventHandler CanExecuteChanged = (sender, e) => { };
-
-        #endregion
-
-        #region Constructor
 
         /// <summary>
         /// Constructor that takes action to execute when <see cref="Execute(object)"/> runs.
@@ -37,10 +25,6 @@ namespace DatingAppLibrary.Commands
         {
             _handler = action;
         }
-
-        #endregion
-
-        #region Command Methods
 
         /// <summary>
         /// A relay command can always execute.
@@ -60,7 +44,5 @@ namespace DatingAppLibrary.Commands
         {
             _handler();
         }
-
-        #endregion
     }
 }

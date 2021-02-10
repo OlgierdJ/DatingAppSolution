@@ -22,18 +22,19 @@
             <RowDefinition/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="DATING APP" FontSize="32" Foreground="HotPink" FontWeight="Heavy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="DATING APP" FontSize="45" Foreground="HotPink" FontWeight="Heavy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Grid.Column="1" Grid.Row="2"
+                 Foreground="{DynamicResource MaterialDesignLightBackground}"
                  Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                  materialDesign:HintAssist.Background="{x:Null}"
                  materialDesign:HintAssist.FloatingOffset="1, -35"
-                 materialDesign:HintAssist.Foreground="{StaticResource MaterialDesignPaper}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
                  FontSize="25"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  Text="{Binding Username}" 
                  materialDesign:HintAssist.Hint="Username"
                  VerticalAlignment="Center"/>
-        <PasswordBox x:Name="PasswordField"
+        <PasswordBox x:Name="PasswordField" Foreground="{DynamicResource MaterialDesignLightBackground}"
                      Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                      materialDesign:HintAssist.Background="{x:Null}"
                      materialDesign:HintAssist.FloatingOffset="1, -35"
@@ -56,12 +57,28 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Grid.Column="1" Background="{DynamicResource AttentionToActionBrush}" FocusVisualStyle="{x:Null}" MinHeight="40" Width="100" FontSize="25" Content="Login" IsDefault="True" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Login}" Style="{StaticResource MaterialDesignFlatButton}"/>
+            <Button Grid.Column="1"
+                    Background="{DynamicResource AttentionToActionBrush}" 
+                    FocusVisualStyle="{x:Null}"
+                    MinHeight="40"
+                    Width="100"
+                    FontSize="25"
+                    Content="Login" 
+                    IsDefault="True"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=Login}"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
 
-            <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock FontSize="25">
+            <StackPanel Grid.Column="1"
+                        Grid.Row="4"
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+                <TextBlock FontSize="25"
+                           Foreground="{DynamicResource MaterialDesignLightBackground}">
                     <Run>You can always</Run>
-                    <Hyperlink Command="{Binding RegisterCommand}" Foreground="#FF673AB7" ToolTip="Click here to register a new account!">Register</Hyperlink>
+                    <Hyperlink Command="{Binding RegisterCommand}" 
+                               Foreground="{DynamicResource MaterialDesignLightBackground}"
+                               ToolTip="Click here to register a new account!">Register</Hyperlink>
                 </TextBlock>
             </StackPanel>
         </Grid>

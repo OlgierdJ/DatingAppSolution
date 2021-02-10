@@ -45,10 +45,10 @@ namespace DatingApp.ViewModels
                         Email = Email
                     };
                     //Maybe do null check on each property or find some way to use required fields.
-                   await api.CreateUserAsync(registeringUser);
+                    await api.CreateUserAsync(registeringUser);
                     _context.CurrentView = ApplicationView.Login;
                 }
-                catch (Exception) {  }
+                catch (Exception) { }
             });
         }
 

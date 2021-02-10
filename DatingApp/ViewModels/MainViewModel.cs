@@ -1,11 +1,7 @@
 ﻿using DatingApp.ValueConverters;
-using DatingAppLibrary.Models;
+using DatingAppLibrary.Commands;
 using DatingAppLibrary.Models.DataModels;
 using DatingAppLibrary.Models.Enums;
-using DatingAppLibrary.WebAPI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace DatingApp.ViewModels
@@ -61,7 +57,7 @@ namespace DatingApp.ViewModels
                 OnPropertyChanged(nameof(CurrentUser));
             }
         }
-
+        public ICommand ClearFocus { get; set; } = new RelayCommand(() => { Keyboard.ClearFocus(); });
         public MainViewModel()
         {
             CurrentView = ApplicationView.Login;
@@ -70,6 +66,5 @@ namespace DatingApp.ViewModels
         private BaseViewModel _selectedViewModel;
         private ApplicationView _currentView;
         private User _currentUser;
-
     }
 }

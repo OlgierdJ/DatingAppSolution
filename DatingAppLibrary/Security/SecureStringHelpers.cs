@@ -5,33 +5,33 @@ using System.Security;
 namespace DatingAppLibrary.Security
 {
     /// <summary>
-    /// Helpers for the <see cref="SecureString"/> class
+    /// Helpers for the <see cref="SecureString"/> class.
     /// </summary>
     public static class SecureStringHelpers
     {
         /// <summary>
-        /// Unsecures a <see cref="SecureString"/> to plain text
+        /// Unsecures a <see cref="SecureString"/> to plain text.
         /// </summary>
-        /// <param name="secureString">The secure string</param>
+        /// <param name="secureString">The secure string.</param>
         /// <returns></returns>
         public static string Unsecure(this SecureString secureString)
         {
-            // Make sure we have a secure string
+            // Make sure we have a secure string.
             if (secureString == null)
                 return string.Empty;
 
-            // Get a pointer for an unsecure string in memory
+            // Get a pointer for an unsecure string in memory.
             var unmanagedString = IntPtr.Zero;
 
             try
             {
-                // Unsecures the password
+                // Unsecures the password.
                 unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
                 return Marshal.PtrToStringUni(unmanagedString);
             }
             finally
             {
-                // Clean up any memory allocation
+                // Clean up any memory allocation.
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }

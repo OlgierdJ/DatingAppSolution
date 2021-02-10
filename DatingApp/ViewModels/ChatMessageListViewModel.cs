@@ -6,90 +6,76 @@ using System.Windows.Input;
 namespace DatingApp.ViewModels
 {
     /// <summary>
-    /// A view model for a chat message thread list
+    /// A view model for a chat message thread list.
     /// </summary>
     public class ChatMessageListViewModel : BaseViewModel
     {
-        #region Protected Members
-
         /// <summary>
-        /// The chat thread items for the list
+        /// The chat thread items for the list.
         /// </summary>
         protected ObservableCollection<ChatMessageListItemViewModel> _Items;
 
-        #endregion
-
-        #region Public Properties
 
         /// <summary>
-        /// The chat thread items for the list
+        /// The chat thread items for the list.
         /// NOTE: Do not call Items.Add to add messages to this list
-        ///       as it will make the FilteredItems out of sync
+        ///       as it will make the FilteredItems out of sync.
         /// </summary>
         public ObservableCollection<ChatMessageListItemViewModel> Items
         {
             get => _Items;
             set
             {
-                // Make sure list has changed
+                // Make sure list has changed.
                 if (_Items == value)
                     return;
 
-                // Update value
+                // Update value.
                 _Items = value;
 
             }
         }
 
         /// <summary>
-        /// The title of this chat list
+        /// The title of this chat list.
         /// </summary>
         public string DisplayTitle { get; set; }
       
         /// <summary>
-        /// The text for the current message being written
+        /// The text for the current message being written.
         /// </summary>
         public string PendingMessageText { get; set; }
 
-        #endregion
-
-        #region Public Commands
 
         /// <summary>
-        /// The command for when the user clicks the send button
+        /// The command for when the user clicks the send button.
         /// </summary>
         public ICommand SendCommand { get; set; }
 
-        #endregion
-
-        #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         public ChatMessageListViewModel()
         {
             SendCommand = new RelayCommand(Send);
         }
 
-        #endregion
-
-        #region Command Methods
 
         /// <summary>
-        /// When the user clicks the send button, sends the message
+        /// When the user clicks the send button, sends the message.
         /// </summary>
         public void Send()
         {
-            // Don't send a blank message
+            // Don't send a blank message.
             if (string.IsNullOrEmpty(PendingMessageText))
                 return;
 
-            // Ensure lists are not null
+            // Ensure lists are not null.
             if (Items == null)
                 Items = new ObservableCollection<ChatMessageListItemViewModel>();
 
-            // Fake send a new message
+            // Fake send a new message.
             var message = new ChatMessageListItemViewModel
             {
                 Initials = "LM",
@@ -100,13 +86,11 @@ namespace DatingApp.ViewModels
                 NewItem = true
             };
 
-            // Add message to both lists
+            // Add message to both lists.
             Items.Add(message);
 
-            // Clear the pending message text
+            // Clear the pending message text.
             PendingMessageText = string.Empty;
         }
-
-        #endregion
     }
 }

@@ -1,8 +1,6 @@
-﻿using DatingApp.ViewModels;
-
-namespace DatingApp.ValueConverters
+﻿namespace DatingApp.ViewModels
 {
-    internal class ChatViewModel : BaseViewModel
+    public class ChatViewModel : BaseViewModel
     {
         private MainViewModel mainContext;
 

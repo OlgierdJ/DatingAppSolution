@@ -27,6 +27,9 @@
             <views:HomeView/>
         </DataTemplate>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding ClearFocus}"/>
+    </Window.InputBindings>
     <Grid>
         <ContentControl Content="{Binding SelectedViewModel}" Focusable="False" FocusVisualStyle="{x:Null}"/>
     </Grid>

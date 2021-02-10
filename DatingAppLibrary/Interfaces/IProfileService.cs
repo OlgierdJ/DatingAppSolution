@@ -11,6 +11,5 @@ namespace DatingAppLibrary.Interfaces
         Task<Profile> GetProfileByIdAsync(int id);
         Task<Profile> UpdateProfileAsync(Profile updatedProfile);
         Task<Profile> DeleteProfileAsync(Profile deletedProfile);
-
     }
 }
