@@ -13,8 +13,6 @@ namespace DatingApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        #region Public Properties
-
         public string Username { get; set; }
         /// <summary>
         /// A flag indicating if the login command is running.
@@ -23,7 +21,6 @@ namespace DatingApp.ViewModels
         public ICommand LoginCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
 
-        #endregion
         public LoginViewModel(MainViewModel context)
         {
             _context = context;

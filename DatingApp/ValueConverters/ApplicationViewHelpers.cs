@@ -23,16 +23,12 @@ namespace DatingApp.ValueConverters
             {
                 case ApplicationView.Login:
                     return new LoginViewModel(mainContext);
-
                 case ApplicationView.Register:
                     return new RegisterViewModel(mainContext);
-
-                case ApplicationView.Chat:
-                   return new ChatViewModel(mainContext);
-
                 case ApplicationView.Home:
                     return new HomeViewModel(mainContext);
-
+                case ApplicationView.Chat:
+                   return new ChatViewModel(mainContext);
                 default:
                     Debugger.Break();
                     return null;
@@ -46,15 +42,14 @@ namespace DatingApp.ValueConverters
         /// <returns></returns>
         public static ApplicationView ToApplicationView(this BaseViewModel viewModel)
         {
-            //if (view is ChatView)
-            //    return ApplicationView.Chat;
-
             if (viewModel is LoginViewModel)
                 return ApplicationView.Login;
             if (viewModel is RegisterViewModel)
                 return ApplicationView.Register;
             if (viewModel is HomeViewModel)
                 return ApplicationView.Home;
+            if (viewModel is ChatViewModel)
+               return ApplicationView.Chat;
             Debugger.Break();
             return default(ApplicationView);
         }

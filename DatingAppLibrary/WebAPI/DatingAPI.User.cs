@@ -50,6 +50,7 @@ namespace DatingAppLibrary.WebAPI
             }
             return null;
         }
+
         public async Task<User> UpdateUserAsync(User user)
         {
             var load = JsonSerializer.Serialize(user);
@@ -59,6 +60,7 @@ namespace DatingAppLibrary.WebAPI
             user = JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync(), SerializerOptions);
             return user;
         }
+
         public async Task<HttpStatusCode> DeleteUserAsync(User user)
         {
             HttpResponseMessage response = await client.DeleteAsync($"user/{user.ID}");
