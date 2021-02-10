@@ -35,7 +35,7 @@ namespace DatingAppServer.Controllers
             {
               return BadRequest();
             }
-            return Ok(user);
+            return Ok(attempt);
         }
 
         [HttpGet, Route("GetUsers")]

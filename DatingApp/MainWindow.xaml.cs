@@ -31,7 +31,6 @@ namespace DatingApp
          * ***5. Should be able to start a chat with the viewed person.
          * ***6. Should be able to disable their profile.
          */
-        private readonly MainViewModel _context = new MainViewModel();
         public MainViewModel Context
         {
             get
@@ -44,5 +43,6 @@ namespace DatingApp
             InitializeComponent();
             DataContext = Context;
         }
+        private readonly MainViewModel _context = new MainViewModel();
     }
 }

@@ -4,12 +4,14 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security;
 using System.Text;
+using System.Text.Json;
 
 namespace DatingAppLibrary.WebAPI
 {
     public partial class DatingAPIConnection
     {
         private readonly HttpClient client = new HttpClient();
+        public JsonSerializerOptions SerializerOptions { get; set; } = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
         public DatingAPIConnection()
         {
             client.BaseAddress = new Uri("http://localhost:63958/api/");

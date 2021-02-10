@@ -34,21 +34,21 @@ namespace DatingAppLibrary.WebAPI
             //response.EnsureSuccessStatusCode();
             if (response.IsSuccessStatusCode)
             {
-                return JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                return JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync(), SerializerOptions);
             }
             return null;
         }
 
         public async Task<User> GetUserAsync(int id)
         {
-            User user = null;
             HttpResponseMessage response = await client.GetAsync(
                 $"user/{id}");
+            //response.EnsureSuccessStatusCode();
             if (response.IsSuccessStatusCode)
             {
-                user = JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync());
+                return JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync(), SerializerOptions);
             }
-            return user;
+            return null;
         }
         public async Task<User> UpdateUserAsync(User user)
         {
@@ -56,7 +56,7 @@ namespace DatingAppLibrary.WebAPI
             HttpContent content = new StringContent(load, Encoding.UTF8);
             HttpResponseMessage response = await client.PutAsync($"user/{user.ID}", content);
             response.EnsureSuccessStatusCode();
-            user = JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync());
+            user = JsonSerializer.Deserialize<User>(await response.Content.ReadAsStringAsync(), SerializerOptions);
             return user;
         }
         public async Task<HttpStatusCode> DeleteUserAsync(User user)

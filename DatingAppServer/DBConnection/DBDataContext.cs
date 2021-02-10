@@ -32,8 +32,8 @@ namespace DatingAppServer.DBConnection
                 entity.HasOne(e => e.UserProfile).WithOne(e => e.User).HasForeignKey<Profile>(e => e.UserRefID);
                 entity.Property(e => e.Active).HasDefaultValue(true).IsRequired();
                 entity.Property(e => e.CreationDate).HasDefaultValueSql("GetDate()");
-                entity.HasMany(e => e.Liked).WithOne(e => e.Liker).HasForeignKey(e => e.LikerRefID);
-                entity.HasMany(e => e.Likers).WithOne(e => e.Likee).HasForeignKey(e => e.LikeeRefID);
+                entity.HasMany(e => e.PeopleWhoILike).WithOne(e => e.Liker).HasForeignKey(e => e.LikerRefID);
+                entity.HasMany(e => e.PeopleWhoLikesMe).WithOne(e => e.Likee).HasForeignKey(e => e.LikeeRefID);
             });
             modelBuilder.Entity<Like>().ToTable("tblLikes");
             modelBuilder.Entity<Like>(entity =>
@@ -44,8 +44,8 @@ namespace DatingAppServer.DBConnection
                 entity.Property(e => e.LikeeRefID).IsRequired();
                 entity.Property(e => e.LikeType).HasConversion(x => (int)x, x => (LikeType)x);
                 entity.Property(e => e.DateOfLike).HasDefaultValueSql("GetDate()");
-                entity.HasOne(e => e.Liker).WithMany(e => e.Liked).HasForeignKey(e => e.LikerRefID);
-                entity.HasOne(e => e.Likee).WithMany(e => e.Likers).HasForeignKey(e => e.LikeeRefID).OnDelete(DeleteBehavior.NoAction);
+                entity.HasOne(e => e.Liker).WithMany(e => e.PeopleWhoILike).HasForeignKey(e => e.LikerRefID);
+                entity.HasOne(e => e.Likee).WithMany(e => e.PeopleWhoLikesMe).HasForeignKey(e => e.LikeeRefID).OnDelete(DeleteBehavior.NoAction);
             });
             modelBuilder.Entity<Profile>().ToTable("tblProfiles");
             modelBuilder.Entity<Profile>(entity =>

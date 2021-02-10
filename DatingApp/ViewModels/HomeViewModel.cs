@@ -1,5 +1,8 @@
 ﻿using DatingApp.ValueConverters;
 using DatingAppLibrary.Models.Enums;
+using DatingAppLibrary.WebAPI;
+using System;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -8,10 +11,6 @@ namespace DatingApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        private readonly MainViewModel _mainContext;
-        private BaseViewModel _selectedSubViewModel;
-        private ApplicationView _currentSubView;
-
         public BaseViewModel SelectedSubViewModel 
         {
             get 
@@ -33,14 +32,19 @@ namespace DatingApp.ViewModels
             set
             {
                 _currentSubView = value;
-                SelectedSubViewModel = _currentSubView.ToViewModel(_mainContext);
+                SelectedSubViewModel = _currentSubView.ToViewModel(_context);
                 OnPropertyChanged(nameof(CurrentSubView));
             }
         }
-        public HomeViewModel(MainViewModel MainContext)
+
+        public HomeViewModel(MainViewModel Context)
         {
-            _mainContext = MainContext;
+            _context = Context;
             CurrentSubView = ApplicationView.Chat;
         }
+
+        private readonly MainViewModel _context;
+        private BaseViewModel _selectedSubViewModel;
+        private ApplicationView _currentSubView;
     }
 }

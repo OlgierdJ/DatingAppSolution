@@ -42,7 +42,7 @@
             <PasswordBox x:Name="PasswordConfirmationField" Grid.Column="2" Grid.Row="1" FontSize="25" Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" materialDesign:HintAssist.Hint="Password Confirmation" MaxLength="32" VerticalAlignment="Center"/>
             <TextBox Grid.Row="2" FontSize="25" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Email" Text="{Binding Email}" VerticalAlignment="Center"/>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Register}" ToolTip="Clicking here abandons your data!">
+        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding RegisterUserCommand}" CommandParameter="{Binding ElementName=Register}" ToolTip="Clicking here attempts to register your data!">
             <TextBlock FontSize="32" FontWeight="Heavy" Text="Confirm Register"/>
         </Button>
     </Grid>

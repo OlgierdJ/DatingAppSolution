@@ -41,16 +41,15 @@ namespace DatingAppLibrary.Models.DataModels
         /// Navigational Profile object containing users details.
         /// </summary>
         public Profile UserProfile { get; set; }
-
         //public List<ChatSession> ChatSessions { get; set; }
         /// <summary>
         /// Navigational List of Like objects containing the outgoing likes of the current user.
         /// </summary>
-        public ICollection<Like> Liked { get; set; }
+        public ICollection<Like> PeopleWhoILike { get; set; }
         /// <summary>
         /// Navigational List of Like objects containing the incoming likes of the current user.
         /// </summary>
-        public ICollection<Like> Likers { get; set; }
+        public ICollection<Like> PeopleWhoLikesMe { get; set; }
         /// <summary>
         /// Matching property used for getting matching like objects.
         /// </summary>

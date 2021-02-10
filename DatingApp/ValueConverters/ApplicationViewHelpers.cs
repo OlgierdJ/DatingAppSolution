@@ -27,8 +27,8 @@ namespace DatingApp.ValueConverters
                 case ApplicationView.Register:
                     return new RegisterViewModel(mainContext);
 
-                //case ApplicationView.Chat:
-                   // return new ChatViewModel(mainContext as ChatMessageListViewModel);
+                case ApplicationView.Chat:
+                   return new ChatViewModel(mainContext);
 
                 case ApplicationView.Home:
                     return new HomeViewModel(mainContext);

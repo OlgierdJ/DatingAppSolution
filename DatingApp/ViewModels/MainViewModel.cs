@@ -2,6 +2,7 @@
 using DatingAppLibrary.Models;
 using DatingAppLibrary.Models.DataModels;
 using DatingAppLibrary.Models.Enums;
+using DatingAppLibrary.WebAPI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace DatingApp.ViewModels
 {
-    //Maybe rename mainviewmodel to WindowViewModel cause makes more sense for when you are logged in to be in the "main" of the program.
+    //Maybe rename mainviewmodel to WindowViewModel or appviewmodel cause makes more sense for when you are logged in to be in the "main" of the program.
     public class MainViewModel : BaseViewModel
     {
         public BaseViewModel SelectedViewModel
@@ -44,7 +45,6 @@ namespace DatingApp.ViewModels
             set
             {
                 _currentUser = value;
-
                 //If there is a user then login.
                 if (_currentUser != null)
                 {
