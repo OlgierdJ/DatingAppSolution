@@ -5,8 +5,8 @@
     /// </summary>
     public enum Gender
     {
-        Female,
         Male,
+        Female,
         Both,
         None,
         ApacheHelicopter,

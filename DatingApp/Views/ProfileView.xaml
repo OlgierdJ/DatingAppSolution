@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="DatingApp.Views.ProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DatingApp.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="1650" MinHeight="1650" d:DesignWidth="800" x:Name="Profile">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Column="1" Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                 materialDesign:HintAssist.Background="{x:Null}"
+                 materialDesign:HintAssist.FloatingOffset="1, -35"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
+                     FontSize="25"
+                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                     materialDesign:HintAssist.Hint="First name"
+                     Text="{Binding FirstName}" 
+                     VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                 materialDesign:HintAssist.Background="{x:Null}"
+                 materialDesign:HintAssist.FloatingOffset="1, -35"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
+                     FontSize="25"
+                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                     materialDesign:HintAssist.Hint="Last name"
+                     Text="{Binding LastName}" 
+                     VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Foreground="{DynamicResource MaterialDesignLightBackground}"
+                 Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                 materialDesign:HintAssist.Background="{x:Null}"
+                 materialDesign:HintAssist.FloatingOffset="1, -35"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
+                     FontSize="25"
+                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                     materialDesign:HintAssist.Hint="Age"
+                     Text="{Binding Age}" 
+                     VerticalAlignment="Center"/>
+        <ComboBox SelectedItem="{Binding Gender}"
+                  ItemsSource="{Binding Genders}"
+                  Foreground="{DynamicResource MaterialDesignLightBackground}"
+                  Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                  FontSize="25" 
+                  Grid.Row="3" 
+                  Grid.Column="1"
+                  Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Background="{x:Null}"
+                 materialDesign:HintAssist.Foreground="{DynamicResource MaterialDesignLightBackground}"
+                  materialDesign:HintAssist.Hint="Gender">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Background" Value="{DynamicResource MaterialDesignLightForeground}" />
+                </Style>
+            </ComboBox.ItemContainerStyle>
+
+        </ComboBox>
+        <Button Grid.Row="9" 
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Height="50" 
+                Style="{StaticResource MaterialDesignFlatButton}"
+                Command="{Binding SaveCommand}"
+                CommandParameter="{Binding ElementName=Profile}"
+                ToolTip="Clicking here attempts to save your data!"
+                Background="{DynamicResource MaterialDesignDarkBackground}" 
+                    FocusVisualStyle="{x:Null}">
+            <TextBlock FontSize="32" FontWeight="Heavy" Text="Save Profile"/>
+        </Button>
+    </Grid>
+</UserControl>

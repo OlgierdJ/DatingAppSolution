@@ -7,7 +7,7 @@ namespace DatingApp.ValueConverters
     /// <summary>
     /// Converts the <see cref="ApplicationView"/> to an actual view/page
     /// </summary>
-    public static class ApplicationPageHelpers
+    public static class ApplicationViewHelpers
     {
         /// <summary>
         /// Takes a <see cref="ApplicationView"/> and a view model, if any, and creates the desired page
@@ -25,6 +25,10 @@ namespace DatingApp.ValueConverters
                     return new RegisterViewModel(mainContext);
                 case ApplicationView.Home:
                     return new HomeViewModel(mainContext);
+                case ApplicationView.Profile:
+                    return new ProfileViewModel(mainContext);
+                case ApplicationView.Browse:
+                    return new BrowseViewModel(mainContext);
                 case ApplicationView.Chat:
                    return new ChatViewModel(mainContext);
                 default:

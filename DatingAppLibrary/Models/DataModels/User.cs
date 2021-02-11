@@ -49,9 +49,13 @@ namespace DatingAppLibrary.Models.DataModels
         /// </summary>
         public ICollection<Like> PeopleWhoLikesMe { get; set; }
         /// <summary>
-        /// Matching property used for getting matching like objects.
+        /// Navigational List of Chat objects containing all the Chats of the current user.
         /// </summary>
-        public List<Chat> Chats { get; set; }
+        public ICollection<Chat> Chats { get; set; }
+
+        ///// <summary>
+        ///// Matching property used for getting matching like objects.
+        ///// </summary>
         //public ICollection<Like> matches
         //{
         //    get

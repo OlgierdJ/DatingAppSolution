@@ -5,9 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DatingApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:navigation="clr-namespace:DatingApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280" 
              Background="{DynamicResource MaterialDesignLightSeparatorBackground}">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type navigation:ProfileViewModel}">
+            <local:ProfileView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type navigation:BrowseViewModel}">
+            <local:BrowseView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type navigation:ChatViewModel}">
+            <local:ChatView/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -34,10 +46,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Content="Browse"
+                <Button Content="Profile" Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
+                    Command="{Binding ProfileCommand}"/>
+                <Button Grid.Row="1" Content="Browse" Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                     Command="{Binding BrowseCommand}"/>
-                <Button Content="Chat"
+                <Button Grid.Row="2" Content="Chat" Background="{DynamicResource MaterialDesignLightSeparatorBackground}"
                     Command="{Binding ChatCommand}"/>
             </Grid>
         </Expander>
@@ -50,5 +65,8 @@
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Center"/>
         <Button Content="Logout" Grid.Column="2" Command="{Binding LogoutCommand}"/>
+        <ScrollViewer Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignScrollViewer}">
+            <ContentControl Content="{Binding SelectedSubViewModel}" Focusable="False" FocusVisualStyle="{x:Null}"/>
+        </ScrollViewer>
     </Grid>
 </UserControl>

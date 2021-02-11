@@ -33,22 +33,24 @@ namespace DatingApp.ViewModels
             }
         }
         public ICommand LogoutCommand { get; set; }
+        public ICommand ProfileCommand { get; set; }
         public ICommand BrowseCommand { get; set; }
         public ICommand ChatCommand { get; set; }
         public HomeViewModel(MainViewModel Context)
         {
             _context = Context;
+            LogoutCommand = new RelayCommand(() => { _context.CurrentUser = null; });
+            ProfileCommand = new RelayCommand(() => { CurrentSubView = ApplicationView.Profile; });
+            BrowseCommand = new RelayCommand(() => { CurrentSubView = ApplicationView.Browse; });
+            ChatCommand = new RelayCommand(() => { CurrentSubView = ApplicationView.Chat; });
             if (_context.CurrentUser.UserProfile == null)
             {
-                CurrentSubView = ApplicationView.Login;
+                CurrentSubView = ApplicationView.Profile;
             }
             else
             {
                 CurrentSubView = ApplicationView.Chat;
             }
-            LogoutCommand = new RelayCommand(() => { _context.CurrentUser = null; });
-            BrowseCommand = new RelayCommand(() => { CurrentSubView = ApplicationView.Browse; });
-            ChatCommand = new RelayCommand(() => { CurrentSubView = ApplicationView.Chat; });
         }
 
         private readonly MainViewModel _context;

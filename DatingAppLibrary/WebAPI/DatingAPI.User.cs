@@ -50,6 +50,32 @@ namespace DatingAppLibrary.WebAPI
             return null;
         }
 
+        public async Task<Profile> CreateProfileAsync(Profile profile)
+        {
+            var load = JsonSerializer.Serialize(profile);
+            HttpContent content = new StringContent(load, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("profile/CreateProfile", content);
+            //response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonSerializer.Deserialize<Profile>(await response.Content.ReadAsStringAsync(), SerializerOptions);
+            }
+            return null;
+        }
+
+        public async Task<Profile> UpdateProfileAsync(Profile profile)
+        {
+            var load = JsonSerializer.Serialize(profile);
+            HttpContent content = new StringContent(load, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync($"profile/{profile.ID}", content);
+            //response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonSerializer.Deserialize<Profile>(await response.Content.ReadAsStringAsync(), SerializerOptions);
+            }
+            return null;
+        }
+
         public async Task<User> UpdateUserAsync(User user)
         {
             var load = JsonSerializer.Serialize(user);

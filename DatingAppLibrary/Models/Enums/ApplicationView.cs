@@ -26,5 +26,10 @@
         /// The Browse view.
         /// </summary>
         Browse,
+
+        /// <summary>
+        /// The Profile view.
+        /// </summary>
+        Profile,
     }
 }

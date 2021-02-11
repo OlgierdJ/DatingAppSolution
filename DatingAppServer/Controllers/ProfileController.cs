@@ -7,41 +7,32 @@ using System.Threading.Tasks;
 
 namespace DatingAppServer.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class ProfileController : ControllerBase
     {
         private readonly IProfileService _profileService;
 
-        public ProfileController(IProfileService userService)
+        public ProfileController(IProfileService profileService)
         {
-            _profileService = userService;
+            _profileService = profileService;
         }
 
 
+        [HttpPost, Route("CreateProfile")]
+        public async Task<ActionResult<Profile>> CreateProfile(Profile profile) => await _profileService.AddProfileAsync(profile);
 
-        public async Task<ActionResult<Profile>> CreateProfile(Profile profile)
-        {
-            return await _profileService.AddProfileAsync(profile);
-        }
+        [HttpGet, Route("GetProfiles")]
+        public async Task<ActionResult<List<Profile>>> GetAllProfiles() => await _profileService.GetAllProfilesAsync();
 
-        public async Task<ActionResult<List<Profile>>> GetAllProfiles()
-        {
-            return await _profileService.GetAllProfilesAsync();
-        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Profile>> GetProfileById(int id) => await _profileService.GetProfileByIdAsync(id);
 
-        public async Task<ActionResult<Profile>> GetProfileById(int id)
-        {
-            return await _profileService.GetProfileByIdAsync(id);
-        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Profile>> UpdateProfile(Profile updatedProfile) => await _profileService.UpdateProfileAsync(updatedProfile);
 
-        public async Task<ActionResult<Profile>> UpdateProfile(Profile updatedProfile)
-        {
-            return await _profileService.UpdateProfileAsync(updatedProfile);
-        }
-
-        public async Task<ActionResult<Profile>> DeleteProfile(Profile deletedProfile)
-        {
-            return await _profileService.DeleteProfileAsync(deletedProfile);
-        }
-
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Profile>> DeleteProfile(Profile deletedProfile) => await _profileService.DeleteProfileAsync(deletedProfile);
     }
 }
