@@ -51,6 +51,7 @@ namespace DatingAppLibrary.Models.DataModels
         /// <summary>
         /// Matching property used for getting matching like objects.
         /// </summary>
+        public List<Chat> Chats { get; set; }
         //public ICollection<Like> matches
         //{
         //    get

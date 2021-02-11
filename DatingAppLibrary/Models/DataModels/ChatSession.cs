@@ -1,6 +1,6 @@
 ﻿namespace DatingAppLibrary.Models.DataModels
 {
-    public class ChatSession
+    public class ChatMap
     {
         public int ID { get; set; }
         public int ChatRefID { get; set; }
